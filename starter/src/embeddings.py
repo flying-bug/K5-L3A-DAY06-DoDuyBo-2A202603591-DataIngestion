@@ -32,8 +32,10 @@ class MyEmbedder:
         self.model_name = model_name
         self.batch_size = batch_size
         self.model = SentenceTransformer(model_name, device=device)
+        # sentence-transformers >= 5.7 renamed get_sentence_embedding_dimension -> get_embedding_dimension;
+        # look both up by name so newer versions don't hit the deprecated method and older ones still work.
         get_dims = getattr(self.model, "get_embedding_dimension", None) or \
-            self.model.get_sentence_embedding_dimension
+            getattr(self.model, "get_sentence_embedding_dimension")
         dims = get_dims()
         if not dims:
             raise RuntimeError(f"cannot read embedding dimension of {model_name}")

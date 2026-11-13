@@ -30,5 +30,5 @@ The test set is run once, after the configuration has been chosen.
 
 ## Limitations and leakage risk
 - There is only one document, so dev and test cannot be split by document. They are split by topic/section where possible, but share vocabulary.
-- The questions and evidence were drafted with AI assistance and then checked automatically against the PDF. The author must still read each one to confirm the expected answer is complete.
+- The questions and evidence were drafted with AI assistance. The author has now manually reviewed all 22 questions, expected answers, and evidence against the source PDF; the automatic verifier also confirms that each evidence quote appears on its gold page. This review checks answer completeness and relevance, not only string presence.
 - With 6 test questions, one question equals about 17 percentage points. Do not generalize beyond this corpus.

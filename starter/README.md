@@ -95,4 +95,4 @@ Kết quả nằm trong `results/`:
 - `run_*.json` và `runs/`: model, phiên bản thư viện, thời gian, thống kê chunk.
 - `ingest_log.json`: trang bị loại hoặc rỗng, header và footer đã bỏ.
 - `selection.json`: cấu hình được chọn trên dev.
-- `audit/*.csv`: bảng chấm tay coherence, grounding và metadata. Các cột nhãn để trống cho người chấm điền.
+- `audit/*.csv`: bảng audit coherence, grounding và metadata đã được điền nhãn và lý do sau khi rà soát trace/PDF. Đây là bản đánh giá thủ công có thể chủ quan; xem các ghi chú từng dòng và đối chiếu nguồn khi cần.
