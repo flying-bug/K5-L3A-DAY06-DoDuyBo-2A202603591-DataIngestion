@@ -1,4 +1,8 @@
-# Core setup and PDF parsing. Choose and install an embedding SDK separately.
+# Core setup and PDF parsing.
 psycopg[binary]==3.3.8
 pypdf>=5,<7
 python-dotenv>=1,<2
+# Local embedding model (install CPU torch first:
+#   pip install torch --index-url https://download.pytorch.org/whl/cpu)
+sentence-transformers>=5,<6
+numpy>=2

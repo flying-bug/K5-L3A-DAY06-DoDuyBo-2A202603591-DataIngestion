@@ -63,3 +63,36 @@ docker compose -p day6_student_starter stop
 5. Sau khi hoàn thiện, chạy `python -m src.run` từ thư mục `starter/`. Trước khi làm TODO, lệnh này **chủ động báo `NotImplementedError`**.
 
 Lưu code, cấu hình, kết quả và lệnh chạy để người chấm tái lập; không commit key, dữ liệu mật hoặc dữ liệu không có quyền chia sẻ.
+
+## 4. Cách chạy bài này (đã hiện thực)
+
+Embedding: `embeddinggemma-300m` chạy local bằng CPU (768 chiều, vector đã chuẩn hóa, có prompt riêng cho query và document). Vector store: PostgreSQL 16 + pgvector 0.8.7, khoảng cách cosine, tìm kiếm chính xác (exact search). Chi phí 0.
+
+```bash
+cd starter
+python -m venv .venv
+.venv\Scripts\python -m pip install torch --index-url https://download.pytorch.org/whl/cpu
+.venv\Scripts\python -m pip install -r requirements.txt
+Copy-Item .env.example .env        # EMBEDDING_MODEL = HF id hoặc thư mục model local
+docker compose -p day6_student_starter up -d --wait
+.venv\Scripts\python scripts/check_setup.py
+.venv\Scripts\python scripts/verify_benchmark.py   # kiểm chứng evidence trước khi chạy
+.venv\Scripts\python -m src.run --ingest-only   # nạp; chạy lại lần 2 phải báo embedded 0, rows không đổi
+.venv\Scripts\python -m src.run --split dev     # chạy dev, áp tiêu chí chọn -> results/selection.json
+.venv\Scripts\python -m src.run --split test    # chỉ chạy được sau dev; tạo các bảng chấm tay
+```
+
+| Cấu hình | Chunk | Truy xuất |
+|---|---|---|
+| A | Cửa sổ 800 ký tự, overlap 100, trong từng trang | Không lọc |
+| B | Gộp các đoạn văn tối đa 800 ký tự; tách chunk ở heading và khi `function` đổi | Không lọc |
+| C | Dùng chung chunk với B | `WHERE function = …` chỉ khi câu hỏi có filter |
+
+Kết quả nằm trong `results/`:
+
+- `summary_{dev,test}.md`: bảng chỉ số.
+- `traces_*.jsonl`: top-3 đầy đủ của từng câu.
+- `run_*.json` và `runs/`: model, phiên bản thư viện, thời gian, thống kê chunk.
+- `ingest_log.json`: trang bị loại hoặc rỗng, header và footer đã bỏ.
+- `selection.json`: cấu hình được chọn trên dev.
+- `audit/*.csv`: bảng chấm tay coherence, grounding và metadata. Các cột nhãn để trống cho người chấm điền.

@@ -1,0 +1,49 @@
+source_id,page,counted,excluded_reason,part,chars
+nist-ai-100-1,1,0,cover,,76
+nist-ai-100-1,2,0,title page,,376
+nist-ai-100-1,3,0,"disclaimer, update schedule, front matter",,1532
+nist-ai-100-1,4,0,table of contents,,1235
+nist-ai-100-1,5,0,table of contents / list of figures,,1639
+nist-ai-100-1,6,1,,front,3108
+nist-ai-100-1,7,1,,front,3103
+nist-ai-100-1,8,1,,front,1874
+nist-ai-100-1,9,1,,part1,2750
+nist-ai-100-1,10,1,,part1,1887
+nist-ai-100-1,11,1,,part1,2770
+nist-ai-100-1,12,1,,part1,2964
+nist-ai-100-1,13,1,,part1,3131
+nist-ai-100-1,14,1,,part1,3058
+nist-ai-100-1,15,1,,part1,1583
+nist-ai-100-1,16,0,"figure only (Fig. 3 caption, 409 chars)",,409
+nist-ai-100-1,17,1,,part1,2648
+nist-ai-100-1,18,1,,part1,2992
+nist-ai-100-1,19,1,,part1,2784
+nist-ai-100-1,20,1,,part1,3129
+nist-ai-100-1,21,1,,part1,2928
+nist-ai-100-1,22,1,,part1,2829
+nist-ai-100-1,23,1,,part1,1678
+nist-ai-100-1,24,1,,part1,1890
+nist-ai-100-1,25,1,,part2,1289
+nist-ai-100-1,26,1,,part2,2696
+nist-ai-100-1,27,1,,part2,2439
+nist-ai-100-1,28,1,,part2,2309
+nist-ai-100-1,29,1,,part2,2470
+nist-ai-100-1,30,1,,part2,2765
+nist-ai-100-1,31,1,,part2,2094
+nist-ai-100-1,32,1,,part2,2334
+nist-ai-100-1,33,1,,part2,2747
+nist-ai-100-1,34,1,,part2,2103
+nist-ai-100-1,35,1,,part2,2063
+nist-ai-100-1,36,1,,part2,2393
+nist-ai-100-1,37,1,,part2,2265
+nist-ai-100-1,38,1,,part2,2662
+nist-ai-100-1,39,1,,part2,468
+nist-ai-100-1,40,1,,appendix,3127
+nist-ai-100-1,41,1,,appendix,3026
+nist-ai-100-1,42,1,,appendix,2062
+nist-ai-100-1,43,1,,appendix,2705
+nist-ai-100-1,44,1,,appendix,2644
+nist-ai-100-1,45,1,,appendix,2703
+nist-ai-100-1,46,1,,appendix,2163
+nist-ai-100-1,47,1,,appendix,2453
+nist-ai-100-1,48,0,back cover,,88

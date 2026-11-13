@@ -1,0 +1,229 @@
+{
+  "started_at": "2026-11-13T10:12:42+00:00",
+  "command": "python -m src.run --split dev",
+  "split": "dev",
+  "embedding": {
+    "provider": "local sentence-transformers (CPU)",
+    "model": "embeddinggemma-300m",
+    "model_path": "E:\\Vin\\models\\embeddinggemma-300m",
+    "weights_sha256": "cbf5a78393b6a033e0b8a63a57549964f7ed5c6fbeb4ba0694214f36123f2fd2",
+    "dimensions": 768,
+    "max_seq_length": 2048,
+    "document_prompt": "title: none | text: ",
+    "query_prompt": "task: search result | query: ",
+    "normalized": true,
+    "sentence_transformers": "5.7.0",
+    "transformers": "5.22.2",
+    "torch": "2.15.0+cpu"
+  },
+  "vector_store": {
+    "postgresql": "16.16 (Debian 16.16-1.pgdg12+1)",
+    "pgvector": "0.8.7",
+    "metric": "cosine (<=>)",
+    "search": "exact, no ANN index",
+    "table": "chunks"
+  },
+  "strategies": {
+    "A": {
+      "index": "fixed800o100",
+      "use_filter": false,
+      "description": "fixed 800 chars, overlap 100, per page; no filter"
+    },
+    "B": {
+      "index": "para800",
+      "use_filter": false,
+      "description": "paragraph groups <= 800 chars, split at headings/function changes; no filter"
+    },
+    "C": {
+      "index": "para800",
+      "use_filter": true,
+      "description": "same chunks as B; SQL filter on `function` when the question provides one"
+    }
+  },
+  "indexes": {
+    "fixed800o100": {
+      "chunker": "fixed_size",
+      "size": 800,
+      "overlap": 100
+    },
+    "para800": {
+      "chunker": "by_paragraph",
+      "max_size": 800
+    }
+  },
+  "top_k": 3,
+  "machine": {
+    "platform": "Windows-11-10.0.26300-SP0",
+    "processor": "Intel64 Family 6 Model 141 Stepping 1, GenuineIntel",
+    "cpu_count": 16,
+    "python": "3.12.10"
+  },
+  "cost_usd": 0.0,
+  "index_stats": {
+    "fixed800o100": {
+      "config": {
+        "chunker": "fixed_size",
+        "size": 800,
+        "overlap": 100
+      },
+      "chunks": 157,
+      "chars": {
+        "min": 122,
+        "median": 800,
+        "mean": 704.9,
+        "max": 800,
+        "total": 110676
+      },
+      "tokens": {
+        "min": 23,
+        "median": 143,
+        "mean": 131.2,
+        "max": 182,
+        "total": 20600
+      },
+      "truncated_chunks": 0,
+      "chunks_with_function": 43,
+      "split_paragraph_chunks": 0,
+      "embedded_now": 0,
+      "unchanged_skipped": 157,
+      "deleted_obsolete": 0,
+      "rows_in_store": 157,
+      "distinct_ids_in_store": 157,
+      "duplicates": 0,
+      "store_matches_chunks": true,
+      "seconds": {
+        "chunking": 0.003,
+        "embedding": 0.0,
+        "upsert_and_prune": 0.05
+      }
+    },
+    "para800": {
+      "config": {
+        "chunker": "by_paragraph",
+        "max_size": 800
+      },
+      "chunks": 186,
+      "chars": {
+        "min": 25,
+        "median": 573.5,
+        "mean": 531.4,
+        "max": 800,
+        "total": 98849
+      },
+      "tokens": {
+        "min": 9,
+        "median": 105.5,
+        "mean": 98.4,
+        "max": 178,
+        "total": 18297
+      },
+      "truncated_chunks": 0,
+      "chunks_with_function": 46,
+      "split_paragraph_chunks": 48,
+      "embedded_now": 0,
+      "unchanged_skipped": 186,
+      "deleted_obsolete": 0,
+      "rows_in_store": 186,
+      "distinct_ids_in_store": 186,
+      "duplicates": 0,
+      "store_matches_chunks": true,
+      "seconds": {
+        "chunking": 0.003,
+        "embedding": 0.0,
+        "upsert_and_prune": 0.06
+      }
+    }
+  },
+  "finished_at": "2026-11-13T10:12:56+00:00",
+  "summary": {
+    "A": {
+      "dev": {
+        "n": 16,
+        "hit1": 12,
+        "hit3": 13,
+        "page_hit3": 15,
+        "evidence_containable": 15,
+        "filter_questions": 4,
+        "filter_compliant": 4,
+        "mean_latency_ms": 109.13,
+        "misses_hit3": [
+          "q02",
+          "q10",
+          "q11"
+        ],
+        "hit1_rate": 0.75,
+        "hit3_rate": 0.8125
+      }
+    },
+    "B": {
+      "dev": {
+        "n": 16,
+        "hit1": 13,
+        "hit3": 15,
+        "page_hit3": 16,
+        "evidence_containable": 16,
+        "filter_questions": 4,
+        "filter_compliant": 4,
+        "mean_latency_ms": 110.42,
+        "misses_hit3": [
+          "q11"
+        ],
+        "hit1_rate": 0.8125,
+        "hit3_rate": 0.9375
+      }
+    },
+    "C": {
+      "dev": {
+        "n": 16,
+        "hit1": 13,
+        "hit3": 15,
+        "page_hit3": 16,
+        "evidence_containable": 16,
+        "filter_questions": 4,
+        "filter_compliant": 4,
+        "mean_latency_ms": 108.55,
+        "misses_hit3": [
+          "q11"
+        ],
+        "hit1_rate": 0.8125,
+        "hit3_rate": 0.9375
+      }
+    }
+  },
+  "selection": {
+    "selected": [
+      "B",
+      "C"
+    ],
+    "tie": true,
+    "note": "B and C tie on every pre-registered criterion (they share the same index); the rule does not separate them, so all tied strategies are carried to test.",
+    "ranking": [
+      "B",
+      "C",
+      "A"
+    ],
+    "rule": [
+      "higher dev Evidence Hit@3",
+      "higher dev Hit@1",
+      "fewer chunks"
+    ],
+    "dev": {
+      "A": {
+        "n": 16,
+        "hit1": 12,
+        "hit3": 13
+      },
+      "B": {
+        "n": 16,
+        "hit1": 13,
+        "hit3": 15
+      },
+      "C": {
+        "n": 16,
+        "hit1": 13,
+        "hit3": 15
+      }
+    },
+    "decided_at": "2026-11-13T10:12:56+00:00"
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "documents": [
+    {
+      "source_id": "nist-ai-100-1",
+      "physical_pages": 48,
+      "counted_pages": 41,
+      "empty_pages": [],
+      "excluded_pages": {
+        "1": "cover",
+        "2": "title page",
+        "3": "disclaimer, update schedule, front matter",
+        "4": "table of contents",
+        "5": "table of contents / list of figures",
+        "16": "figure only (Fig. 3 caption, 409 chars)",
+        "48": "back cover"
+      },
+      "removed_header_footer_lines": 103,
+      "counted_chars_after_normalization": 99115,
+      "function_pages": [
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38
+      ]
+    }
+  ],
+  "parse_seconds": 0.83
+}

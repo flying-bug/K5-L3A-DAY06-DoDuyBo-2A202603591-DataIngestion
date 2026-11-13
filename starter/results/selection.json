@@ -1,0 +1,36 @@
+{
+  "selected": [
+    "B",
+    "C"
+  ],
+  "tie": true,
+  "note": "B and C tie on every pre-registered criterion (they share the same index); the rule does not separate them, so all tied strategies are carried to test.",
+  "ranking": [
+    "B",
+    "C",
+    "A"
+  ],
+  "rule": [
+    "higher dev Evidence Hit@3",
+    "higher dev Hit@1",
+    "fewer chunks"
+  ],
+  "dev": {
+    "A": {
+      "n": 16,
+      "hit1": 12,
+      "hit3": 13
+    },
+    "B": {
+      "n": 16,
+      "hit1": 13,
+      "hit3": 15
+    },
+    "C": {
+      "n": 16,
+      "hit1": 13,
+      "hit3": 15
+    }
+  },
+  "decided_at": "2026-11-13T10:12:56+00:00"
+}
